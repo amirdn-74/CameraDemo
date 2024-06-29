@@ -1,9 +1,12 @@
 #pragma once
 
 #include "../Math.h"
+#include "../Renderer/VertexArray.h"
 
 
 
+
+typedef unsigned int UINT;
 
 
 class IComponent
@@ -49,8 +52,14 @@ struct MeshComponent
 {
 	std::vector<Vertex> vertices;
 
-	MeshComponent() {}
-	MeshComponent(const std::vector<Vertex>& _vertices) : vertices(_vertices) {}
+	UINT entityId;
+};
+
+struct RenderComponent
+{
+	VertexArray renderId;
+
+	UINT entityId;
 };
 
 
@@ -58,10 +67,7 @@ struct ColorComponent
 {
 	glm::vec4 color {1.f};
 
-	ColorComponent() {}
-	ColorComponent(float scalar) : color(scalar) {}
-	ColorComponent(float r, float g, float b, float a) : color({r, g, b, a}) {}
-	ColorComponent(const glm::vec4& _color) : color(_color) {}
+	UINT entityId;
 };
 
 
@@ -71,8 +77,5 @@ struct TransformationComponent
 	glm::vec3 Rotation {1.f};
 	glm::vec3 Scale {1.f};
 
-	TransformationComponent() {}
-	TransformationComponent(const glm::vec3& pos, const glm::vec3& rot, const glm::vec3& scale)
-		: Position(pos), Rotation(rot), Scale(scale)
-	{}
+	UINT entityId;
 };

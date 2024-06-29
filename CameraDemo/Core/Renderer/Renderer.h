@@ -24,41 +24,41 @@ private:
 public:
 	static void submitScene(std::shared_ptr<Scene> scene)
 	{
-		m_scene = scene;
+		
 	}
 
 	static void DrawScene(std::shared_ptr<Scene> scene)
-	{
-		auto sceneEntities = scene->getMeshEntities();
+	{		
+		auto entities = scene->getEntities();
+		auto components = scene->getComponents<MeshComponent>();
 
-
-		for (const auto* entity : sceneEntities)
+		for (auto ent : entities)
 		{
-			auto meshes = entity->getComponent<MeshComponent>();
-			auto color = entity->getComponent<ColorComponent>()[0];
-			auto transform = entity->getComponent<TransformationComponent>()[0];
+			if (!scene->hasComponent<MeshComponent>(ent)) continue;
 
-			for (auto mesh : meshes)
+			auto meshComponents = scene->getComponents<MeshComponent>(ent);
+
+			for (auto mesh : meshComponents)
 			{
 				VertexArray va;
-				VertexBuffer vb(mesh->vertices);
+				VertexBuffer vb(mesh.vertices);
 				vb.addLayout("position", 3);
 				vb.addLayout("normal", 3);
 				vb.addLayout("texCoord", 2);
 				vb.applyLayouts();
-				Shader shader("./Core/Renderer/Shaders/Default/Vertex.shader", "./Core/Renderer/Shaders/Default/Fragment.shader");
+				/*Shader shader("./Core/Renderer/Shaders/Default/Vertex.shader", "./Core/Renderer/Shaders/Default/Fragment.shader");
 				shader.bind();
 
 				shader.set4f("_color", color->color.r, color->color.g, color->color.b, color->color.a);
 
 				glm::mat4 trans = glm::mat4(1.f);
 
-				trans = glm::rotate(trans, glm::radians(45.f), glm::vec3{0.f, 0.f, 1.f});
+				trans = glm::rotate(trans, glm::radians(45.f), glm::vec3{ 0.f, 0.f, 1.f });
 
-				shader.setMat4("_transform", trans);
+				shader.setMat4("_transform", trans);*/
 
-				//Texture texture("Textures\\1.jpg");
-
+				//scene->attachComponent<RenderComponent>(ent, { va });
+				//ent.AddComponent<MaterialComponent>(shader);
 				DrawMesh(mesh);
 
 				va.unBind();
@@ -67,8 +67,8 @@ public:
 	}
 
 private:
-	static void DrawMesh(const MeshComponent* mesh)
+	static void DrawMesh(const MeshComponent& mesh)
 	{
-		glDrawArrays(GL_TRIANGLES, 0, mesh->vertices.size());
+		glDrawArrays(GL_TRIANGLES, 0, mesh.vertices.size());
 	}
 };
