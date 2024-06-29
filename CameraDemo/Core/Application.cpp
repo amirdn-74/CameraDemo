@@ -13,6 +13,7 @@ Application::Application()
 	m_window->setEventHandler(EVENT_BINDER(Application::eventHandler));
 
 	m_scene = std::make_shared<FirstScene>("first scene");
+	Renderer::submitScene(m_scene);
 }
 
 void Application::run()

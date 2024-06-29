@@ -24,7 +24,7 @@ struct VertexLayoutElement
 class VertexBuffer
 {
 public:
-	VertexBuffer(std::vector<Vertex> vertices)
+	VertexBuffer(const std::vector<Vertex>& vertices)
 	{
 		glGenBuffers(1, &m_id);
 		glBindBuffer(GL_ARRAY_BUFFER, m_id);
