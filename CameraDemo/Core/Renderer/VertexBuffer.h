@@ -4,7 +4,21 @@
 #include <iostream>
 #include <glad/glad.h>
 
-#include "../Scene/Components.h"
+#include "../Math.h"
+
+
+
+struct Vertex
+{
+	glm::vec3 Position;
+	glm::vec3 Normal;
+	glm::vec2 TextureCoordinate;
+
+	Vertex() {};
+	Vertex(const glm::vec3& pos, const glm::vec3& norm, const glm::vec2& txCoord)
+		: Position(pos), Normal(norm), TextureCoordinate(txCoord)
+	{}
+};
 
 
 struct VertexLayoutElement
@@ -33,12 +47,17 @@ public:
 
 	~VertexBuffer() 
 	{
-		destroy();
+		//destroy();
 	}
 
 	void bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_id);
+	}
+
+	unsigned int getId() const
+	{
+		return m_id;
 	}
 
 	void unBind() const

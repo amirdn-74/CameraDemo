@@ -2,6 +2,8 @@
 
 #include "../Math.h"
 #include "../Renderer/VertexArray.h"
+#include "../Renderer/VertexBuffer.h"
+#include "../Renderer/IndexBuffer.h"
 
 
 
@@ -37,27 +39,23 @@ public:
 
 
 
-struct Vertex
-{
-	glm::vec3 Position;
-	glm::vec3 Normal;
-	glm::vec2 TextureCoordinate;
 
-	Vertex(const glm::vec3& pos, const glm::vec3& norm, const glm::vec2& txCoord) 
-		: Position(pos), Normal(norm), TextureCoordinate(txCoord)
-	{}
-};
 
 struct MeshComponent
 {
-	std::vector<Vertex> vertices;
+	//std::vector<Vertex> vertices;
+	std::string path;
 
 	UINT entityId;
 };
 
 struct RenderComponent
 {
-	VertexArray renderId;
+	VertexArray va;
+	VertexBuffer vb;
+	IndexBuffer ib;
+	size_t vertexCount;
+	size_t indexCount;
 
 	UINT entityId;
 };

@@ -76,14 +76,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Resources\Assimp\include;$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;$(SolutionDir)Resources\Assimp\bin</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Resources\Assimp\include;$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -102,8 +102,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;$(SolutionDir)Resources\Assimp\bin</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,14 +112,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Resources\Assimp\include;$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;$(SolutionDir)Resources\Assimp\bin</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Resources\Assimp\include;$(SolutionDir)Resources\GLAD;$(SolutionDir)Resources\GLFW\include;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -138,12 +138,14 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Resources\GLFW\bin;$(SolutionDir)Resources\Assimp\bin</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\Application.cpp" />
+    <ClCompile Include="Core\Providers\MeshProvider.cpp" />
+    <ClCompile Include="Core\Renderer\IndexBuffer.cpp" />
     <ClCompile Include="Core\Vendor\Glad\glad.c" />
     <ClCompile Include="Core\Renderer\Renderer.cpp" />
     <ClCompile Include="Core\Renderer\Shader.cpp" />
@@ -159,9 +161,12 @@
     <ClInclude Include="Core\Event\KeyboardEvent.h" />
     <ClInclude Include="Core\Event\MouseEvent.h" />
     <ClInclude Include="Core\Event\WindowEvent.h" />
+    <ClInclude Include="Core\Providers\MeshProvider.h" />
+    <ClInclude Include="Core\Renderer\IndexBuffer.h" />
     <ClInclude Include="Core\Renderer\Renderer.h" />
     <ClInclude Include="Core\Renderer\Shader.h" />
     <ClInclude Include="Core\Renderer\VertexBuffer.h" />
+    <ClInclude Include="Core\Providers\ResourceProvider.h" />
     <ClInclude Include="Core\Scene\Components.h" />
     <ClInclude Include="Core\Scene\Entity.h" />
     <ClInclude Include="Core\Scene\Scene.h" />
@@ -169,7 +174,11 @@
     <ClInclude Include="Core\Window.h" />
     <ClInclude Include="Core\Renderer\VertexArray.h" />
     <ClInclude Include="Entities\Triangle.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scenes\FirstScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CameraDemo.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

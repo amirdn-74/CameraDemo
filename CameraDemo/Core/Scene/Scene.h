@@ -13,6 +13,7 @@ class Scene
 {
 private:
 	const char* m_title;
+
 	std::vector<Entity> m_entities;
 
 	std::unordered_map<UINT, std::vector<MeshComponent>> m_meshComponents;
