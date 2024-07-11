@@ -10,10 +10,14 @@ public:
 	VertexArray();
 	~VertexArray() 
 	{
-		destroy();
+		//destroy();
 	}
 
 	void bind() const;
+	unsigned int getId() const
+	{
+		return m_id;
+	}
 	void unBind() const;
 	void destroy() const;
 

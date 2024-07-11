@@ -29,12 +29,6 @@ public:
 private:
 	void createWindow();
 	void setWindowEvents();
-	void openglDebugCb(GLenum source,
-        GLenum type,
-        GLuint id,
-        GLenum severity,
-        GLsizei length,
-        const GLchar* message,
-        const void* userParam);
+	void openglDebug();
 };
 
